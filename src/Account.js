@@ -15,6 +15,14 @@
     return this._transactions;
   };
 
+  Account.prototype.deposit = function (amount) {
+    if (amount < 0) {
+      throw Error("Cannot deposit negative amount.");
+    };
+    this._transactions.push(amount);
+    this._balance += amount;
+  };
+
   exports.Account = Account;
 
 })(this);
