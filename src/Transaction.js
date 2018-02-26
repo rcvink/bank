@@ -2,13 +2,18 @@
 
 (function(exports) {
 
-  function Transaction(amount, date = new Date()) {
+  function Transaction(amount, newBalance, date = new Date()) {
     this._amount = amount;
+    this._newBalance = newBalance;
     this._date = date;
   };
 
   Transaction.prototype.amount = function () {
     return this._amount;
+  };
+
+  Transaction.prototype.newBalance = function () {
+    return this._newBalance;
   };
 
   Transaction.prototype.date = function () {

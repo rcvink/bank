@@ -6,7 +6,7 @@
   };
 
   TransactionPrinter.prototype.print = function (transaction) {
-    console.log(`${this._date(transaction)} || ${this._amount(transaction)} || `);
+    console.log(`${this._date(transaction)} || ${this._amount(transaction)} || ${this._balance(transaction)}`);
   };
 
   TransactionPrinter.prototype._date = function (transaction) {
@@ -22,6 +22,10 @@
     } else if (transaction.isWithdrawal()) {
       return `|| ${(-transaction.amount()).toFixed(2)}`;
     };
+  };
+
+  TransactionPrinter.prototype._balance = function (transaction) {
+    return `${transaction.newBalance().toFixed(2)}`
   };
 
   exports.TransactionPrinter = TransactionPrinter;

@@ -5,7 +5,7 @@ describe('Transaction', function() {
   var date = new Date("February 25, 2018 11:13:00")
 
   beforeEach(function() {
-    transaction = new Transaction(10, date);
+    transaction = new Transaction(10, 20, date);
   });
 
   it('has an amount', function() {
@@ -14,6 +14,10 @@ describe('Transaction', function() {
 
   it('has a date', function() {
     expect(transaction.date()).toEqual(date);
+  });
+
+  it('has an updated balance', function() {
+    expect(transaction.newBalance()).toEqual(20);
   });
 
   it('knows when it is a deposit', function() {
