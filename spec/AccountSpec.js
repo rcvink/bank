@@ -2,13 +2,13 @@
 
 describe('Account', function() {
   var transactionPrinter;
-  var accountPrinter;
+  var statementPrinter;
   var account;
 
   beforeEach(function() {
     transactionPrinter = {}
-    accountPrinter = {}
-    account = new Account(transactionPrinter, accountPrinter);
+    statementPrinter = {}
+    account = new Account(transactionPrinter, statementPrinter);
   });
 
   describe('initially, has', function() {
@@ -25,8 +25,8 @@ describe('Account', function() {
       expect(account.transactionPrinter()).toEqual(transactionPrinter);
     });
 
-    it('an account printer', function() {
-      expect(account.accountPrinter()).toEqual(accountPrinter);
+    it('a statement printer', function() {
+      expect(account.statementPrinter()).toEqual(statementPrinter);
     });
 
   });
