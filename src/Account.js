@@ -24,7 +24,7 @@
     if (amount < 0) {
       throw Error("Cannot deposit negative amount.");
     };
-    this._transactions.push(amount);
+    this._addTransaction(amount);
     this._balance += amount;
   };
 
@@ -32,8 +32,12 @@
     if (this._insufficientFunds(amount)) {
       throw Error("Insufficient funds.");
     };
-    this._transactions.push(-amount);
+    this._addTransaction(amount);
     this._balance -= amount;
+  };
+
+  Account.prototype._addTransaction = function (amount) {
+    this._transactions.push(new Transaction(amount));
   };
 
   Account.prototype._insufficientFunds = function (amount) {
