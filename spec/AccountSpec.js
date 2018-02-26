@@ -1,14 +1,12 @@
 'use strict';
 
 describe('Account', function() {
-  var transactionPrinter;
   var statementPrinter;
   var account;
 
   beforeEach(function() {
-    transactionPrinter = {}
     statementPrinter = {}
-    account = new Account(transactionPrinter, statementPrinter);
+    account = new Account(statementPrinter);
   });
 
   describe('initially, has', function() {
@@ -19,10 +17,6 @@ describe('Account', function() {
 
     it('an empty transaction list', function() {
       expect(account.transactions()).toEqual([]);
-    });
-
-    it('a transaction printer', function() {
-      expect(account.transactionPrinter()).toEqual(transactionPrinter);
     });
 
     it('a statement printer', function() {

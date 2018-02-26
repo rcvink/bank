@@ -2,15 +2,10 @@
 
 (function(exports) {
 
-  function Account(transactionPrinter, statementPrinter) {
+  function Account(statementPrinter) {
     this._balance = 0;
     this._transactions = [];
-    this._transactionPrinter = transactionPrinter;
     this._statementPrinter = statementPrinter;
-  };
-
-  Account.prototype.transactionPrinter = function () {
-    return this._transactionPrinter;
   };
 
   Account.prototype.statementPrinter = function () {
@@ -29,20 +24,20 @@
     if (amount < 0) {
       throw Error("Cannot deposit negative amount.");
     };
-    this._addTransaction(amount);
     this._balance += amount;
+    this._transactions.push(new Transaction(amount, this._balance))
   };
 
   Account.prototype.withdraw = function (amount) {
     if (this._insufficientFunds(amount)) {
       throw Error("Insufficient funds.");
     };
-    this._addTransaction(amount);
     this._balance -= amount;
+    this._transactions.push(new Transaction(-amount, this._balance))
   };
 
-  Account.prototype._addTransaction = function (amount) {
-    this._transactions.push(new Transaction(amount));
+  Account.prototype.summary = function () {
+    this._statementPrinter.print(this._transactions);
   };
 
   Account.prototype._insufficientFunds = function (amount) {
