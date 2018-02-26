@@ -15,7 +15,15 @@
       console.log("No transactions on this account!");
       return;
     };
+    this._logHeaders();
+    this._logTransactions(transactions);
+  };
+
+  StatementPrinter.prototype._logHeaders = function () {
     console.log("date || credit || debit || balance");
+  };
+
+  StatementPrinter.prototype._logTransactions = function (transactions) {
     transactions.forEach(function(transaction) {
       this._transactionPrinter.print(transaction);
     }.bind(this));
