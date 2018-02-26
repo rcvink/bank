@@ -16,4 +16,13 @@ describe('Transaction', function() {
     expect(transaction.date()).toEqual(date);
   });
 
+  it('knows when it is a deposit', function() {
+    expect(transaction.isDeposit()).toBe(true);
+  });
+
+  it('knows when it is a withdrawal', function() {
+    transaction = new Transaction(-20, date);
+    expect(transaction.isWithdrawal()).toBe(true);
+  });
+
 });
