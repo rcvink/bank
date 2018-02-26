@@ -23,6 +23,18 @@
     this._balance += amount;
   };
 
+  Account.prototype.withdraw = function (amount) {
+    if (this._insufficientFunds(amount)) {
+      throw Error("Insufficient funds.");
+    };
+    this._transactions.push(-amount);
+    this._balance -= amount;
+  };
+
+  Account.prototype._insufficientFunds = function (amount) {
+    return amount > this._balance;
+  };
+
   exports.Account = Account;
 
 })(this);

@@ -28,11 +28,31 @@ describe('Account', function() {
 
     it('adds amount to transaction list', function() {
       account.deposit(10);
-      expect(account.transactions().length).toEqual(1);
+      expect(account.transactions()[0]).toEqual(10);
     });
 
     it('fails if amount is negative', function() {
       expect(function() { account.deposit(-10) }).toThrowError("Cannot deposit negative amount.");
+    });
+
+  });
+
+  describe('withdraw()', function() {
+
+    it('decreases the balance', function() {
+      account.deposit(20);
+      account.withdraw(5);
+      expect(account.balance()).toEqual(15);
+    });
+
+    it('adds amount to transaction list', function() {
+      account.deposit(20);
+      account.withdraw(5);
+      expect(account.transactions()[1]).toEqual(-5);
+    });
+
+    it('fails if insufficient funds', function() {
+      expect(function() { account.withdraw(10) }).toThrowError("Insufficient funds.");
     });
 
   });
