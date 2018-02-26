@@ -37,7 +37,7 @@
   };
 
   Account.prototype.summary = function () {
-    this._statementPrinter.print(this._transactions);
+    this._statementPrinter.print(this._transactions.reverse());
   };
 
   Account.prototype._insufficientFunds = function (amount) {
