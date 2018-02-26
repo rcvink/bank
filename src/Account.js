@@ -2,9 +2,14 @@
 
 (function(exports) {
 
-  function Account() {
+  function Account(transactionPrinter) {
     this._balance = 0;
     this._transactions = [];
+    this._transactionPrinter = transactionPrinter;
+  };
+
+  Account.prototype.transactionPrinter = function () {
+    return this._transactionPrinter;
   };
 
   Account.prototype.balance = function () {

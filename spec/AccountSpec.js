@@ -1,10 +1,12 @@
 'use strict';
 
 describe('Account', function() {
+  var transactionPrinter;
   var account;
 
   beforeEach(function() {
-    account = new Account();
+    transactionPrinter = {}
+    account = new Account(transactionPrinter);
   });
 
   describe('initially, has', function() {
@@ -17,6 +19,10 @@ describe('Account', function() {
       expect(account.transactions()).toEqual([]);
     });
 
+    it('a transaction printer', function() {
+      expect(account.transactionPrinter()).toEqual(transactionPrinter);
+    });
+
   });
 
   describe('deposit()', function() {
@@ -26,9 +32,9 @@ describe('Account', function() {
       expect(account.balance()).toEqual(10);
     });
 
-    it('adds amount to transaction list', function() {
+    it('adds a transaction to transaction list', function() {
       account.deposit(10);
-      expect(account.transactions()[0]).toEqual(10);
+      expect(account.transactions().length).toEqual(1);
     });
 
     it('fails if amount is negative', function() {
@@ -45,10 +51,10 @@ describe('Account', function() {
       expect(account.balance()).toEqual(15);
     });
 
-    it('adds amount to transaction list', function() {
+    it('adds a transaction to transaction list', function() {
       account.deposit(20);
       account.withdraw(5);
-      expect(account.transactions()[1]).toEqual(-5);
+      expect(account.transactions().length).toEqual(2);
     });
 
     it('fails if insufficient funds', function() {
