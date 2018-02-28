@@ -90,6 +90,7 @@ I want my statement to show dates, amounts and balance for each transaction.
 1. Wrote the user stories.
 2. Wrote this README.
 3. Diagrammed the model:
+<br>
 
 ![Process model](https://github.com/rcvink/bank/blob/master/Bank.png)
 
