@@ -85,15 +85,14 @@ I want my statement to show dates, amounts and balance for each transaction.
 
 ```
 
-## Approach
+## Process
 
 1. Wrote the user stories.
 2. Wrote this README.
 3. Diagrammed the model:
 
-  ```
-  TO-DO
-  ```
+![Process model](https://github.com/rcvink/bank/blob/master/bank.PNG)
+
 4. Decided to use JavaScript (for practice) and Jasmine for testing.
 5. Used the red-green-refactor TDD cycle to satisfy user stories one-by-one.
 
